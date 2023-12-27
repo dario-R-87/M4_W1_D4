@@ -9,9 +9,7 @@ for(const item of items.data){
   <div class="card-body">
     <h5 class="card-title">${item.album.title}</h5>
     <p class="card-text">${item.title}</p>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-     Crea Lista
-    </button>
+
   </div>
 </div>
  `;
@@ -30,9 +28,7 @@ for(const item of items.data){
   <div class="card-body">
     <h5 class="card-title">${item.album.title}</h5>
     <p class="card-text">${item.title}</p>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-     Crea Lista
-    </button>
+
   </div>
 </div>
  `;
@@ -51,9 +47,7 @@ for(const item of items.data){
   <div class="card-body">
     <h5 class="card-title">${item.album.title}</h5>
     <p class="card-text">${item.title}</p>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-     Crea Lista
-    </button>
+
   </div>
 </div>
  `;
