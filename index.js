@@ -1,56 +1,38 @@
-fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem").then((res)=>{
+const fetchSongs = function (artist){
+const url="https://striveschool-api.herokuapp.com/api/deezer/search?q="+artist;
+fetch(url).then((res)=>{
 	return res.json();}).then((items)=>{
-	 
-const eminem = document.querySelector("#eminemSection");
+
+const idName = "#"+artist+"Section"
+const art = document.querySelector(idName);
+const album = [];
+document.querySelector(".modal-body").innerHTML=``;
 for(const item of items.data){
- eminem.innerHTML += `
+ art.innerHTML += `
   <div class="card text-secondary" style="width: 18rem;">
   <img src="${item.album.cover}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${item.album.title}</h5>
     <p class="card-text">${item.title}</p>
-
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Crea Lista
+</button>
   </div>
 </div>
  `;
+document.querySelector("#exampleModalLabel").innerHTML=`${item.artist.name}`;
+if(!album.includes((item.album.title).toLowerCase())){
+album.push((item.album.title).toLowerCase());
+document.querySelector(".modal-body").innerHTML+=`<div>${item.album.title}</div>`;
+}
 }
 
 });
-
-fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=queen").then((res)=>{
-	return res.json();}).then((items)=>{
-	 
-const queen = document.querySelector("#queenSection");
-for(const item of items.data){
- queen.innerHTML += `
-  <div class="card text-secondary" style="width: 18rem;">
-  <img src="${item.album.cover}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${item.album.title}</h5>
-    <p class="card-text">${item.title}</p>
-
-  </div>
-</div>
- `;
 }
 
-});
+fetchSongs("eminem");
+fetchSongs("queen");
+fetchSongs("metallica");
 
-fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=metallica").then((res)=>{
-	return res.json();}).then((items)=>{
-	 
-const metallica = document.querySelector("#metallicaSection");
-for(const item of items.data){
- metallica.innerHTML += `
-  <div class="card text-secondary" style="width: 18rem;">
-  <img src="${item.album.cover}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${item.album.title}</h5>
-    <p class="card-text">${item.title}</p>
+const modal = function(a){alert(a);}
 
-  </div>
-</div>
- `;
-}
-
-});
